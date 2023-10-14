@@ -129,7 +129,7 @@ def process_text_view(request):
 
 	jsonObj = json.dumps(responseJson)
 
-	jsonPath = parent / "note-ai-frontend" / "src" / "testPrompt.json"
+	jsonPath = parent / "note-ai-frontend" / "src" / "lib" / "data" / "testPrompt.json"
 
 	with open(jsonPath, "w") as outfile:
 		outfile.write(jsonObj)
