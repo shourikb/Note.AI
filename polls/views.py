@@ -30,8 +30,6 @@ def get_completion(prompt):
     return "asdf"
 
 
-<<<<<<< HEAD
-=======
 	query = openai.Completion.create(
 		 engine="text-davinci-003",
 		 prompt=prompt,
@@ -43,8 +41,7 @@ def get_completion(prompt):
 
 	response = query.choices[0].text
 	return response
-  
->>>>>>> 0a03b2a23935298a7ea5b1b0ead8efe64815a61f
+
 # def upload_file(request):
 # 	print(request)
 # 	print('asdfdsf')
@@ -69,7 +66,6 @@ def query_view(request):
 
         url = request.POST.get("prompt")
 
-<<<<<<< HEAD
         doc = docx.Document(url)
         fullText = []
         for para in doc.paragraphs:
@@ -84,7 +80,6 @@ def query_view(request):
         print(response)
         return JsonResponse({"response": response})
     return render(request, "index.html")
-=======
 		 prompt = '\n'.join(fullText) + " Based on the above notes, generate 3 multiple choice question with 4 answer choices. Please give the correct answers at the end of your response in a separate section. For example: Q1: blah blah Q2: blah blah Correct Answers: blah blah"
 
 		 response = get_completion(prompt)
@@ -94,5 +89,4 @@ def query_view(request):
 		 print(response)
 		 print(spl)
 		 return JsonResponse({"response": response})
-	 return render(request, 'index.html') 
->>>>>>> 0a03b2a23935298a7ea5b1b0ead8efe64815a61f
+	 return render(request, 'index.html')
