@@ -1,4 +1,4 @@
-<!-- query.html -->
+<!-- query.html
 <html> 
 <head> 
 	<title>Query</title> 
@@ -27,14 +27,13 @@
 			}); 
 				// Get the prompt 
 				
-				// var fileReader = new FileReader();
+				var fileReader = new FileReader();
 				var prompt;
-				// fileReader.onLoad = function() {		
-					// prompt = fileReader.result;
-				// };
-				// fileReader.readAsDataURL($('#prompt').prop('files')[0]);
+				fileReader.onLoad = function() {		
+					prompt = fileReader.result;
+				};
+				fileReader.readAsDataURL($('#prompt').prop('files')[0]);
 
-				prompt = "C:\\Users\\sanat\\Downloads\\Sample Doc.docx"
 	
 
 				var dateTime = new Date(); 
@@ -59,14 +58,14 @@
 </head> 
 <body> 
 	<div class="container p-3"> 
-		<h3>ChatGPT Clone</h3> 
+		<h3>Note.AI</h3> 
 		<div class="mb-3"> 
-			<form method="post"> 
+			<form method="post" enctype="multipart/form-data"> 
 				{% csrf_token %} 
 				<label for="prmopt">Select a file:</label>
 				<input type="file" id="prompt" name="prompt">
-<!-- 				<label for="prompt" class="form-label"><strong>Prompt: </strong></label> 
-				<textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3"></textarea>  -->
+ 				<label for="prompt" class="form-label"><strong>Prompt: </strong></label> 
+				<textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3"></textarea>  
 				<br> 
 				<button class="btn btn-primary" type="submit">Submit</button> 
 			</form> 
@@ -80,3 +79,10 @@
 	</div> 
 </body> 
 </html> 
+ -->
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+    <input type="file" name="sentFile" />
+    <input type="submit" name="submit" value="Upload" />
+</form>
+{{name}}

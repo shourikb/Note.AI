@@ -3,7 +3,10 @@ from django.http import HttpResponse, JsonResponse
 from .forms import UploadFileForm
 import openai
 import json
+from django.core.files.storage import default_storage
 import docx
+import os
+from pathlib import Path
 
 openai.api_key = "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"
 
@@ -33,9 +36,25 @@ def query_view(request):
 	if request.method == "POST":
 		print(request)
 
-		url = request.POST.get("prompt")
+		f = request.FILES['sentFile']
+		# print(f)
+		response = {}
+		file_name = "doc.docx"
+		file_name_2 = default_storage.save(file_name, f)
+		url = default_storage.url(file_name_2)
+		print(url)
+		# print(os.path.dirname(__file__))
 
-		doc = docx.Document(url)
+		parent = Path(__file__).parent.parent
+		print(parent)
+
+		path = parent / "media" / file_name_2
+		print(path)
+
+
+		# print(file_url)
+		# return render(request, 'index.html', response)
+		doc = docx.Document(path)
 		fullText = []
 		for para in doc.paragraphs:
 			fullText.append(para.text)
@@ -43,10 +62,11 @@ def query_view(request):
 		prompt = '\n'.join(fullText) + " Based on the above notes, generate 3 multiple choice question with 4 answer choices. Please give the correct answers at the end of your response in a separate section. For example: Q1: blah blah Q2: blah blah Correct Answers: blah blah"
 
 		response = get_completion(prompt)
-		spl = response.split("Correct Answer")
-		# question = spl[0]
-		# answer = spl[1]
-		print(response)
-		print(spl)
-		return JsonResponse({"response": response})
+		spl = response.split("Correct Answers:")
+		# question = spl[0].strip()
+		# answer = spl[1].strip()
+		responseJson = {}
+		responseJson['name'] = str(response)
+		print(responseJson)
+		return render(request, 'index.html', responseJson)
 	return render(request, 'index.html')
