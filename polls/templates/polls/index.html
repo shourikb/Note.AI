@@ -26,7 +26,17 @@
 				headers: { 'X-CSRFToken': csrftoken } 
 			}); 
 				// Get the prompt 
-				var prompt = $('#prompt').val(); 
+				
+				// var fileReader = new FileReader();
+				var prompt;
+				// fileReader.onLoad = function() {		
+					// prompt = fileReader.result;
+				// };
+				// fileReader.readAsDataURL($('#prompt').prop('files')[0]);
+
+				prompt = "C:\\Users\\sanat\\Downloads\\Sample Doc.docx"
+	
+
 				var dateTime = new Date(); 
 				var time = dateTime.toLocaleTimeString(); 
 				// Add the prompt to the response div 
@@ -52,8 +62,10 @@
 		<div class="mb-3"> 
 			<form method="post"> 
 				{% csrf_token %} 
-				<label for="prompt" class="form-label"><strong>Prompt: </strong></label> 
-				<textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3"></textarea> 
+				<label for="prmopt">Select a file:</label>
+				<input type="file" id="prompt" name="prompt">
+<!-- 				<label for="prompt" class="form-label"><strong>Prompt: </strong></label> 
+				<textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3"></textarea>  -->
 				<br> 
 				<button class="btn btn-primary" type="submit">Submit</button> 
 			</form> 
