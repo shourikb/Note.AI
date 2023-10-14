@@ -1,4 +1,28 @@
 <script>
+	async function uploadFile(file) {
+		console.log(file);
+		const formData = new FormData();
+		formData.append("sentFile", file);
+
+		var response;
+		try {
+		response = await fetch("http://localhost:8000/polls/", {
+			method: "POST",
+			mode: "cors",
+			body: formData,
+			headers: {Accept: 'application/json', },
+		});
+		} catch (error) {
+			console.log(error)
+		}
+
+		console.log(response);
+		if (response.ok) {
+			const data = await response.json();
+			var text = data.question;
+			console.log(text);
+		}
+	}
 	let files;
 
 	$: if (files) {
@@ -7,6 +31,7 @@
 		console.log(files);
 
 		for (const file of files) {
+			uploadFile(file)
 			console.log(`${file.name}: ${file.size} bytes`);
 		}
 	}
