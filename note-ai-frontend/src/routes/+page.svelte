@@ -1,4 +1,5 @@
 <script>
+    export var data;
 	async function uploadFile(file) {
 		console.log(file);
 		const formData = new FormData();
@@ -21,6 +22,8 @@
 			const data = await response.json();
 			var text = data.question;
 			console.log(text);
+            console.log(data);
+            return data;
 		}
 	}
 	let files;
@@ -31,7 +34,7 @@
 		console.log(files);
 
 		for (const file of files) {
-			uploadFile(file)
+			data = uploadFile(file)
 			console.log(`${file.name}: ${file.size} bytes`);
 		}
 	}

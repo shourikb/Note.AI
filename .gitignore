@@ -45,3 +45,5 @@ internal
 .eslintcache
 .svelte-kit
 .azure
+*.docx
+*.json
