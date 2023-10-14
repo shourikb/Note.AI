@@ -16,14 +16,14 @@ def get_completion(prompt):
 	print(prompt)
 
 	# query = openai.Completion.create(
-	#	 engine="text-davinci-003", 
-	#	 prompt=prompt, 
-	#	 max_tokens=1024, 
-	#	 n=1, 
-	#	 stop=None, 
-	#	 temperature=0.5, 
-	# ) 
-
+	# 	 engine="text-davinci-003",
+	# 	 prompt=prompt,
+	# 	 max_tokens=1024,
+	# 	 n=1,
+	# 	 stop=None,
+	# 	 temperature=0.5,
+	# )
+	#
 	# response = query.choices[0].text
 	return "asdf"
   
@@ -55,7 +55,7 @@ def query_view(request):
 		 for para in doc.paragraphs:
 		 	fullText.append(para.text)
 
-		 prompt = '\n'.join(fullText)
+		 prompt = '\n'.join(fullText) + " Based on the above notes, generate 2 multiple choice question with 4 answer choices."
 
 		 response = get_completion(prompt) 
 		 print(response)
