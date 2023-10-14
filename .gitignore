@@ -44,3 +44,4 @@ internal
 *.tgz
 .eslintcache
 .svelte-kit
+.azure
