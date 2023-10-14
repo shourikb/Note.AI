@@ -12,7 +12,7 @@
 	}
 </script>
 
-<h1>Choose a file upload type</h1>
+<h1 class="text-3xl">Choose a file upload type</h1>
 <label for="avatar">Upload a Word Document:</label>
 <input accept=".txt,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" bind:files id="avatar" name="avatar" type="file" />
 
@@ -21,8 +21,6 @@
 	{#each Array.from(files) as file}
 		<p>{file.name} ({file.size} bytes)</p>
         {#await file.text() then text}
-            <p>{text}</p>
-
             <a href="/question-types">
                 <button>Process Notes?</button>
             </a>
