@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import openai
+import json
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # Create your views here.
 def index(request):
@@ -10,7 +11,7 @@ def index(request):
 
 def get_completion(prompt): 
 	print("Prompt:")
-	# print(prompt)
+	print(prompt)
     # Step 1: send the conversation and available functions to GPT
     # messages = [{"role": "user", "content": prompt}]
     # functions = [
@@ -77,13 +78,19 @@ def get_completion(prompt):
         temperature=0.5, 
     ) 
 	print("Response:")
-	# print(response)
+	print(response)
 	return response
   
   
 def query_view(request): 
-    if request.method == 'POST': 
+    if request.method == 'POST':
+
+        print(request)
+
         prompt = request.POST.get('prompt') 
+
         response = get_completion(prompt) 
-        return JsonResponse({'response': response}) 
+        return JsonResponse({
+        		'name': "asdf",
+        	})
     return render(request, 'index.html') 
