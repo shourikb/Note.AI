@@ -5,28 +5,31 @@ import openai
 import json
 import docx
 
-openai.api_key = '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'
+openai.api_key = "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"
+
 
 # Create your views here.
 def index(request):
-	return HttpResponse("Hello world, youre at polls index")
+    return HttpResponse("Hello world, youre at polls index")
 
-def get_completion(prompt): 
-	print("Prompt:")
-	print(prompt)
 
-	# query = openai.Completion.create(
-	# 	 engine="text-davinci-003",
-	# 	 prompt=prompt,
-	# 	 max_tokens=1024,
-	# 	 n=1,
-	# 	 stop=None,
-	# 	 temperature=0.5,
-	# )
-	#
-	# response = query.choices[0].text
-	return "asdf"
-  
+def get_completion(prompt):
+    print("Prompt:")
+    print(prompt)
+
+    # query = openai.Completion.create(
+    # 	 engine="text-davinci-003",
+    # 	 prompt=prompt,
+    # 	 max_tokens=1024,
+    # 	 n=1,
+    # 	 stop=None,
+    # 	 temperature=0.5,
+    # )
+    #
+    # response = query.choices[0].text
+    return "asdf"
+
+
 # def upload_file(request):
 # 	print(request)
 # 	print('asdfdsf')
@@ -42,22 +45,26 @@ def get_completion(prompt):
 # 			return JsonResponse({'response': "asdf"})
 # 	else:
 # 		form = UploadFileForm()
-# 	return render(request, 'index.html')  
+# 	return render(request, 'index.html')
 
-def query_view(request): 
-	 if request.method == 'POST':
-		 print(request)
 
-		 url = request.POST.get('prompt') 
+def query_view(request):
+    if request.method == "POST":
+        print(request)
 
-		 doc = docx.Document(url)
-		 fullText = []
-		 for para in doc.paragraphs:
-		 	fullText.append(para.text)
+        url = request.POST.get("prompt")
 
-		 prompt = '\n'.join(fullText) + " Based on the above notes, generate 2 multiple choice question with 4 answer choices."
+        doc = docx.Document(url)
+        fullText = []
+        for para in doc.paragraphs:
+            fullText.append(para.text)
 
-		 response = get_completion(prompt) 
-		 print(response)
-		 return JsonResponse({'response': response})
-	 return render(request, 'index.html') 
+        prompt = (
+            "\n".join(fullText)
+            + " Based on the above notes, generate 2 multiple choice question with 4 answer choices."
+        )
+
+        response = get_completion(prompt)
+        print(response)
+        return JsonResponse({"response": response})
+    return render(request, "index.html")
