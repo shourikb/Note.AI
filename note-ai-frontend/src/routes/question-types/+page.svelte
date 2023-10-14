@@ -4,6 +4,7 @@
     let shortAnswer = false;
     let essay = false;
     let timer = false;
+    let errorMessage = "We unfortunately do not support this functionality at this time";
 </script>
 
 <h1> What types of questions do you want </h1>
@@ -26,29 +27,12 @@
 </label>
 <label>
     <h3>Submit Choices</h3>
-    <a href="/exam"><button disabled={!multipleChoice && selectAll && essay && timer}> <a href="/exam"> Submit Choices</button>
+    <a href="/exam" target="_blank">
+        <button disabled={!multipleChoice || selectAll || shortAnswer || essay || timer}>  Submit Choices</button>
+    </a>
+
 </label>
 
-{#if selectAll}
-	<p>We unfortunately do not support this functionality at this time</p>
-    {:else}
-    <p></p>
-{/if}
-
-{#if shortAnswer}
-	<p>We unfortunately do not support this functionality at this time</p>
-    {:else}
-    <p></p>
-{/if}
-
-{#if essay}
-	<p>We unfortunately do not support this functionality at this time</p>
-    {:else}
-    <p></p>
-{/if}
-
-{#if timer}
-	<p>We unfortunately do not support this functionality at this time</p>
-    {:else}
-    <p></p>
+{#if selectAll || essay || shortAnswer || timer}
+    <h3> {errorMessage} </h3>
 {/if}
