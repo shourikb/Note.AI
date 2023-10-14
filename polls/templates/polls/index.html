@@ -34,7 +34,7 @@
 				// };
 				// fileReader.readAsDataURL($('#prompt').prop('files')[0]);
 
-				prompt = "/Users/shourikbanerjee/Downloads/Sample Doc.docx"
+				prompt = "C:\\Users\\sanat\\Downloads\\Sample Doc.docx"
 	
 
 				var dateTime = new Date(); 
@@ -49,7 +49,8 @@
 					data: {prompt: prompt}, 
 					dataType: 'json',
 					success: function(data) { 
-						$('#response').append('<p>('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>'); 
+						$('#response').append('<p>('+ time + ') <i class="bi bi-robot"></i>: ' + data.question + '</p>');
+						$('#response').append('<p>('+ time + ') <i class="bi bi-robot"></i>: ' + data.answer + '</p>'); 
 					} 
 				}); 
 			}); 
