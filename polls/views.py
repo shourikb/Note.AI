@@ -10,7 +10,7 @@ from pathlib import Path
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 # Create your views here.
