@@ -15,7 +15,7 @@
 <h1>Choose a file upload type</h1>
 
 <label for="avatar">Upload a Word Document:</label>
-<input accept=".docx, .doc" bind:files id="avatar" name="avatar" type="file" />
+<input accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" bind:files id="avatar" name="avatar" type="file" />
 
 {#if files}
 	<h2>Selected files:</h2>
