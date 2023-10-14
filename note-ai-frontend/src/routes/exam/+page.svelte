@@ -33,3 +33,5 @@
 <QuestionBlock question={answerChoicesAndQuestion[0][0]}, answerChoice1={answerChoicesAndQuestion[0][1]}, answerChoice2={answerChoicesAndQuestion[0][2]}, answerChoice3={answerChoicesAndQuestion[0][3]}, answerChoice4={answerChoicesAndQuestion[0][4]}/>
 <QuestionBlock question={answerChoicesAndQuestion[1][0]}, answerChoice1={answerChoicesAndQuestion[1][1]}, answerChoice2={answerChoicesAndQuestion[1][2]}, answerChoice3={answerChoicesAndQuestion[1][3]}, answerChoice4={answerChoicesAndQuestion[1][4]}/>
 <QuestionBlock question={answerChoicesAndQuestion[2][0]}, answerChoice1={answerChoicesAndQuestion[2][1]}, answerChoice2={answerChoicesAndQuestion[2][2]}, answerChoice3={answerChoicesAndQuestion[2][3]}, answerChoice4={answerChoicesAndQuestion[2][4]}/>
+<p></p>
+<button on:click={() => console.log(answer)}>Show Answers?</button>

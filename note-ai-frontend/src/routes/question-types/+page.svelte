@@ -26,7 +26,6 @@
     no
 </label>
 <label>
-    <h3>Submit Choices</h3>
     <a href="/exam">
         <button disabled={!multipleChoice || selectAll || shortAnswer || essay || timer}>  Submit Choices</button>
     </a>
