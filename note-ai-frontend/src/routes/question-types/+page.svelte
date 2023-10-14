@@ -27,7 +27,7 @@
 </label>
 <label>
     <h3>Submit Choices</h3>
-    <a href="/exam" target="_blank">
+    <a href="/exam">
         <button disabled={!multipleChoice || selectAll || shortAnswer || essay || timer}>  Submit Choices</button>
     </a>
 
