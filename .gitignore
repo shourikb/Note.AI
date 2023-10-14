@@ -1,6 +1,6 @@
 ## Weird SSD thing
 ._*
-polls/templates/polls/index.html
+index.html
 
 # Django stuff:
 *.log
