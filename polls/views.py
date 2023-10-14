@@ -124,7 +124,17 @@ def process_text_view(request):
 	question = spl[0].strip()
 	answer = spl[1].strip()
 	responseJson = {"question": question, "answer": answer}
-	print(json.dumps(responseJson))
+	
+
+
+	jsonObj = json.dumps(responseJson)
+
+	jsonPath = parent / "note-ai-frontend" / "src" / "testPrompt.json"
+
+	with open(jsonPath, "w") as outfile:
+		outfile.write(jsonObj)
+
+
 	# responseJson['name'] = str(response)
 	# print(responseJson)
 	response = Response(responseJson)
