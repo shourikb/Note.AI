@@ -15,17 +15,17 @@ def get_completion(prompt):
 	print("Prompt:")
 	print(prompt)
 
-	# query = openai.Completion.create(
-	# 	 engine="text-davinci-003",
-	# 	 prompt=prompt,
-	# 	 max_tokens=1024,
-	# 	 n=1,
-	# 	 stop=None,
-	# 	 temperature=0.5,
-	# )
-	#
-	# response = query.choices[0].text
-	return "asdf"
+	query = openai.Completion.create(
+		 engine="text-davinci-003",
+		 prompt=prompt,
+		 max_tokens=1024,
+		 n=1,
+		 stop=None,
+		 temperature=0.5,
+	)
+
+	response = query.choices[0].text
+	return response
   
 # def upload_file(request):
 # 	print(request)
@@ -55,9 +55,13 @@ def query_view(request):
 		 for para in doc.paragraphs:
 		 	fullText.append(para.text)
 
-		 prompt = '\n'.join(fullText) + " Based on the above notes, generate 2 multiple choice question with 4 answer choices."
+		 prompt = '\n'.join(fullText) + " Based on the above notes, generate 3 multiple choice question with 4 answer choices. Please give the correct answers at the end of your response in a separate section. For example: Q1: blah blah Q2: blah blah Correct Answers: blah blah"
 
-		 response = get_completion(prompt) 
+		 response = get_completion(prompt)
+		 spl = response.split("Correct Answer")
+		 # question = spl[0]
+		 # answer = spl[1]
 		 print(response)
-		 return JsonResponse({'response': response})
+		 print(spl)
+		 return JsonResponse({"response": response})
 	 return render(request, 'index.html') 
