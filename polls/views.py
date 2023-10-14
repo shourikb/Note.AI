@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import openai
 import json
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # Create your views here.
 def index(request):
@@ -69,7 +69,7 @@ def get_completion(prompt):
     #     )  # get a new response from GPT where it can see the function response
     #     return second_response
 
-	response = openai.Completion.create(
+	query = openai.Completion.create(
         engine="text-davinci-003", 
         prompt=prompt, 
         max_tokens=1024, 
@@ -77,8 +77,9 @@ def get_completion(prompt):
         stop=None, 
         temperature=0.5, 
     ) 
-	print("Response:")
-	print(response)
+	# print("Response:")
+	# print(response)
+	response = query.choices[0].text
 	return response
   
   
@@ -90,7 +91,6 @@ def query_view(request):
         prompt = request.POST.get('prompt') 
 
         response = get_completion(prompt) 
-        return JsonResponse({
-        		'name': "asdf",
-        	})
+        print(response)
+        return JsonResponse({'response': response})
     return render(request, 'index.html') 
