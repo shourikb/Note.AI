@@ -1,0 +1,4 @@
+{'question':
+    'Q1: What is the time complexity of adding a node to the front of a LinkedList?\nA. O(1)\nB. O(n)\nC. O(n^2)\nD. O(log n)\n\nQ2: What is the time complexity of traversing n nodes in a LinkedList?\nA. O(1)\nB. O(n)\nC. O(n^2)\nD. O(log n)\n\nQ3: What is the time complexity of adding a node to a specific index of a LinkedList?\nA. O(1)\nB. O(n)\nC. O(n^2)\nD. O(log n)',
+'answer': 'Q1: A. O(1)\nQ2: B. O(n)\nQ3: B. O(n)'
+}
