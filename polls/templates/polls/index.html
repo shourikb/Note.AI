@@ -34,7 +34,7 @@
 				// Clear the prompt 
 				$('#prompt').val(''); 
 				$.ajax({ 
-					url: '/', 
+					url: 'http://localhost:8000/polls/', 
 					type: 'POST', 
 					data: {prompt: prompt}, 
 					dataType: 'json', 
