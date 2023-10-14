@@ -7,6 +7,8 @@ from django.core.files.storage import default_storage
 import docx
 import os
 from pathlib import Path
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 openai.api_key = "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"
 
@@ -63,10 +65,71 @@ def query_view(request):
 
 		response = get_completion(prompt)
 		spl = response.split("Correct Answers:")
-		# question = spl[0].strip()
-		# answer = spl[1].strip()
-		responseJson = {}
+		question = spl[0].strip()
+		answer = spl[1].strip()
+		responseJson = {"question": question, "answer": answer}
+		print(json.dumps(responseJson))
 		responseJson['name'] = str(response)
-		print(responseJson)
+		# print(responseJson)
 		return render(request, 'index.html', responseJson)
 	return render(request, 'index.html')
+
+@api_view(['POST', 'GET'])
+def process_text_view(request):
+	if (request.method == "GET"):
+		return render(request, 'index.html')
+
+	# if (request.method == 'OPTIONS'):
+	# 	http_method_names = ['GET', 'POST']
+	# 	print(request)
+	# 	print(request.path)
+	# 	print(request.path_info)
+	# 	print(request.FILES)
+	# 	print(request.META)
+	# 	response = HttpResponse()
+	# 	response['allow'] = http_method_names
+	# 	return response
+
+	print(request)
+	print(request.POST)
+	print(request.FILES)
+	
+	f = request.FILES['sentFile']
+	# print(f)
+	response = {}
+	file_name = "doc.docx"
+	file_name_2 = default_storage.save(file_name, f)
+	url = default_storage.url(file_name_2)
+	print(url)
+	# print(os.path.dirname(__file__))
+
+	parent = Path(__file__).parent.parent
+	print(parent)
+
+	path = parent / "media" / file_name_2
+	print(path)
+
+
+	# print(file_url)
+	# return render(request, 'index.html', response)
+	doc = docx.Document(path)
+	fullText = []
+	for para in doc.paragraphs:
+		fullText.append(para.text)
+
+	prompt = '\n'.join(fullText) + " Based on the above notes, generate 3 multiple choice question with 4 answer choices. Please give the correct answers at the end of your response in a separate section. For example: Q1: blah blah Q2: blah blah Correct Answers: blah blah"
+
+	responseStr = get_completion(prompt)
+	spl = responseStr.split("Correct Answers:")
+	question = spl[0].strip()
+	answer = spl[1].strip()
+	responseJson = {"question": question, "answer": answer}
+	print(json.dumps(responseJson))
+	# responseJson['name'] = str(response)
+	# print(responseJson)
+	response = Response(responseJson)
+	response["Access-Control-Allow-Origin"] = "*"
+	response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+	response["Access-Control-Max-Age"] = "1000"
+	response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+	return response
