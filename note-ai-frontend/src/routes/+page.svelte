@@ -40,12 +40,22 @@
 
 <div class="bg-cover flex justify-center items-center w-screen h-screen" style="background-image: url('/src/lib/v602-nunoon-32-rippednotes.jpg'); height: 900px">
 <div class="w-3/4 h-2/3 bg-white relative rounded-lg flex flex-col justify-center items-center border-sky-400 border-[18px]">
-<h1 class="text-7xl">Choose a file upload type</h1>
-<label for="avatar">Upload a Word Document:</label>
-<input accept=".txt,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" bind:files id="avatar" name="avatar" type="file" />
-
+<h1 class="text-7xl font-serif flex">Choose a file upload type</h1>
+<label for="avatar">
+            <p class="mt-6 mb-6 text-2xl font-mono">
+            Upload a Word Document:</p>
+        </label>
+<div class="items-center justify-center ml-32 flex font-bold">
+<input accept=".docx" bind:files id="avatar" name="avatar" type="file" class="justify-center text-indigo-400
+   file:mr-5 file:py-1 file:px-3 file:border-[1px]
+   file:text-xs file:font-medium
+   file:bg-stone-50 file:text-stone-700
+   hover:file:cursor-pointer hover:file:bg-blue-50
+   hover:file:text-blue-700
+   flex items-center"/>
+</div>
 {#if files}
-	<h2>Selected files:</h2>
+	<h2 class="font-crazy">Selected files:</h2>
 	{#each Array.from(files) as file}
 		<p>{file.name} ({file.size} bytes)</p>
         {#await file.text() then text}
