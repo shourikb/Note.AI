@@ -7,10 +7,6 @@
     let errorMessage = "We unfortunately do not support this functionality at this time";
 </script>
 
-
-
-
-
 <div class="bg-cover flex justify-center items-center w-screen h-screen" style="background-image: url('/src/lib/v602-nunoon-32-rippednotes.jpg'); height: 900px">
 <div class="w-3/4 h-2/3 bg-white relative rounded-lg flex flex-col justify-center items-center border-sky-400 border-[18px]">
 <h1 class="text-5xl font-serif"> What types of questions do you want? </h1>
@@ -53,9 +49,11 @@
         hover:bg-sky-200
         flex items-center">  Submit Choices</button>
     </a>
-</label></div></div>
+</label>
+</div></div>
 
 
 {#if selectAll || essay || shortAnswer || timer}
     <h3> {errorMessage} </h3>
 {/if}
+
