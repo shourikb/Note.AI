@@ -21,8 +21,6 @@
 		if (response.ok) {
 			const data = await response.json();
 			var text = data.question;
-			console.log(text);
-            console.log(data);
             return data;
 		}
 	}
@@ -40,7 +38,9 @@
 	}
 </script>
 
-<h1 class="text-3xl">Choose a file upload type</h1>
+<div class="bg-cover flex justify-center items-center w-screen h-screen" style="background-image: url('/src/lib/v602-nunoon-32-rippednotes.jpg'); height: 900px">
+<div class="w-3/4 h-2/3 bg-white relative rounded-lg flex flex-col justify-center items-center border-sky-400 border-[18px]">
+<h1 class="text-7xl">Choose a file upload type</h1>
 <label for="avatar">Upload a Word Document:</label>
 <input accept=".txt,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" bind:files id="avatar" name="avatar" type="file" />
 
@@ -55,3 +55,5 @@
         {/await}
 	{/each}
 {/if}
+    </div>
+</div>
