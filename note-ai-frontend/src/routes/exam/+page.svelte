@@ -34,6 +34,7 @@
 <div class="bg-cover flex justify-center items-center w-screen h-screen" style="background-image: url('/src/lib/v602-nunoon-32-rippednotes.jpg'); height: 900px">
 <div class="w-3/4 h-[60rem] bg-white relative rounded-lg flex flex-col justify-center items-center border-sky-400 border-[18px]">
 <h1 class="flex text-7xl mb-2 font-mono">Practice Quiz Time!!!</h1>
+<div class="mt-5">
 <div class="mr-5">
 <QuestionBlock question={answerChoicesAndQuestion[0][0]}, answerChoice1={answerChoicesAndQuestion[0][1]}, answerChoice2={answerChoicesAndQuestion[0][2]}, answerChoice3={answerChoicesAndQuestion[0][3]}, answerChoice4={answerChoicesAndQuestion[0][4]}/>
 </div>
@@ -42,6 +43,7 @@
 </div>
 <div class="mr-5">
 <QuestionBlock question={answerChoicesAndQuestion[2][0]}, answerChoice1={answerChoicesAndQuestion[2][1]}, answerChoice2={answerChoicesAndQuestion[2][2]}, answerChoice3={answerChoicesAndQuestion[2][3]}, answerChoice4={answerChoicesAndQuestion[2][4]}/>
+</div>
 </div>
 <p></p>
 <div class="mt-8">
