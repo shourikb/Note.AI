@@ -1,5 +1,6 @@
 <script>
     export var data;
+    export var enabled = false;
 	async function uploadFile(file) {
 		console.log(file);
 		const formData = new FormData();
@@ -21,7 +22,9 @@
 		if (response.ok) {
 			const data = await response.json();
 			var text = data.question;
-            return data;
+            console.log(data);
+            enabled = true;
+            return enabled;
 		}
 	}
 	let files;
@@ -54,16 +57,32 @@
    hover:file:text-blue-700
    flex items-center"/>
 </div>
+
+<div class="items-center justify-center mt-8 flex">
 {#if files}
-	<h2 class="font-crazy">Selected files:</h2>
+    <div class="mr-6">
+	<h2 class="font-crazy">Selected files: </h2>
+    </div>
+    <div class="">
 	{#each Array.from(files) as file}
+        <div class="mb-5">
 		<p>{file.name} ({file.size} bytes)</p>
+        </div>
         {#await file.text() then text}
+            {#if enabled}
+            <div class="justify-center items-center">
             <a href="/question-types">
-                <button>Process Notes?</button>
+                <button class="justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Process Notes?</button>
             </a>
+            </div>
+            {:else}
+                <p class="text-red-300">Loading...</p>
+
+{/if}
         {/await}
 	{/each}
+    </div>
 {/if}
+                </div>
     </div>
 </div>
