@@ -7,14 +7,22 @@
     let correctAnswer = false
 </script>
 
-<div>
-    <h1>{question}</h1>
-    <div>
+<div class="">
+    <h1 class="text-3xl mt-10 mb-2">{question.slice(0,-1)}</h1>
+    <div class="flex text-xl">
 <label>
-    <input type="radio" bind:group={correctAnswer} value={1}>{answerChoice1}
-    <input type="radio" bind:group={correctAnswer} value={2}>{answerChoice2}
-    <input type="radio" bind:group={correctAnswer} value={3}>{answerChoice3}
-    <input type="radio" bind:group={correctAnswer} value={4}>{answerChoice4}
+    <div class="mb-1 mt-1">
+                <input type="radio" bind:group={correctAnswer} value={1}>{" " + answerChoice1.slice(0,-1)}
+                </div>
+    <div>
+                <input type="radio" bind:group={correctAnswer} value={2}>{" " + answerChoice2.slice(0,-1)}
+                </div>
+                <div>
+                <input type="radio" bind:group={correctAnswer} value={3}>{" " + answerChoice3.slice(0,-1)}
+                </div>
+                <div>
+                <input type="radio" bind:group={correctAnswer} value={4}>{" " + answerChoice4}
+                </div>
 </label>
 </div>
 </div>
